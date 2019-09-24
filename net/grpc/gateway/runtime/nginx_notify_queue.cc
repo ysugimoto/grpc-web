@@ -52,10 +52,10 @@ void NginxNotifyQueue::Add(std::unique_ptr<Tag> tag) {
   }
 
   waiting_for_notify_ = true;
-  ngx_int_t rc = ngx_notify(&notify_);
+  ngx_int_t rc = ngx_notify_event(&notify_);
   GPR_ASSERT(rc == NGX_OK);
   if (rc != NGX_OK) {
-    ERROR("ngx_notify failed, rc = %" PRIdPTR ".", rc);
+    ERROR("ngx_notify_event failed, rc = %" PRIdPTR ".", rc);
   }
   gpr_mu_unlock(&mutex_);
 }
