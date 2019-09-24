@@ -20,6 +20,7 @@
 
 #include <algorithm>
 #include <utility>
+#include <ngx_event.h>
 
 #include "net/grpc/gateway/log.h"
 
